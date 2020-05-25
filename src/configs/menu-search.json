@@ -1,0 +1,14 @@
+[
+  {
+    "name": "dashboard",
+    "route": "dashboard"
+  },
+  {
+    "name": "configurations",
+    "route": "configurations"
+  },
+  {
+    "name": "login",
+    "route": "login"
+  }
+]

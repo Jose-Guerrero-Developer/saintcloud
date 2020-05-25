@@ -1,3 +1,11 @@
 {
-  "message": "hello i18n !!"
+  "configurations": "Configurations",
+  "dashboard": "Dashboard",
+  "english": "English",
+  "french": "French",
+  "login": "Login",
+  "search": "Search",
+  "set_language": "Set language",
+  "spanish": "Spanish",
+  "statistics": "Statistics"
 }

@@ -1,0 +1,76 @@
+@import "~bulma/sass/utilities/_all";
+
+$primary: #6DC54A;
+$primary-invert: findColorInvert($primary);
+$twitter: #4099FF;
+$twitter-invert: findColorInvert($twitter);
+
+$colors: (
+    "white"  : ($white,   $black),
+    "black"  : ($black,   $white),
+    "light"  : ($light,   $light-invert),
+    "dark"   : ($dark,    $dark-invert),
+    "primary": ($primary, $primary-invert),
+    "info"   : ($info,    $info-invert),
+    "success": ($success, $success-invert),
+    "warning": ($warning, $warning-invert),
+    "danger" : ($danger,  $danger-invert),
+    "twitter": ($twitter, $twitter-invert)
+);
+
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
+body > div > div > div {
+  top: 38px !important;
+}
+
+.navbar-brand-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-left: .2em;
+}
+.navbar-item img {
+  max-height: 3rem;
+}
+
+.navbar-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-container-menu-search {
+  display: flex;
+  align-items: center;
+  margin-right: .5em;
+}
+
+#wrapper-dashboard > nav > div > div.navbar-menu > div.navbar-end > section > div > div > div.control.has-icons-left.is-clearfix > input {
+  box-shadow: none;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+}
+
+.dropdown {
+  vertical-align: middle;
+}
+
+#wrapper-dashboard > nav > div > div.navbar-menu > div.navbar-end > div:nth-child(3) {
+  margin-left: 0;
+  margin-right: .7em;
+}
+
+#wrapper-dashboard > nav > div > div.navbar-menu > div.navbar-end > div > div.dropdown-trigger > button {
+  height: 100%;
+}
+
+#wrapper-dashboard > nav > div > div.navbar-menu > div.navbar-end > div > div.dropdown-trigger {
+  display: flex;
+  align-items: center;
+}

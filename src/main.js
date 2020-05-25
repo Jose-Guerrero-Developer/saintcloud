@@ -1,8 +1,12 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import i18n from './i18n'
+import Vue    from 'vue'
+import App    from './app/App.vue'
+import i18n   from './app/i18n/i18n'
+import store  from './app/store/store'
+import router from './app/router/router'
+
+import '@/app/layout/buefy'
+import 'css-utils-padding/lib/padding.css'
+import '@/assets/styles.scss'
 
 Vue.config.productionTip = false
 
