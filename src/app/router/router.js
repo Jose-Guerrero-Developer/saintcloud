@@ -19,9 +19,9 @@ const routes = [
         component: () => import('@/views/dashboard')
       },
       {
-        path: '/configurations',
-        name: 'configurations',
-        component: () => import('@/views/configurations')
+        path: '/users',
+        name: 'users',
+        component: () => import('@/views/users')
       }
     ]
   },

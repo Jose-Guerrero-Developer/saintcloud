@@ -4,8 +4,10 @@
   "english": "Anglais",
   "french": "Français",
   "login": "S'identifier",
+  "navigation_menu": "Menu de navigation",
   "search": "Recherchez",
   "set_language": "Définir la langue",
   "spanish": "Espagnol",
-  "statistics": "Statistiques"
+  "statistics": "Statistiques",
+  "users": "Utilisateurs"
 }

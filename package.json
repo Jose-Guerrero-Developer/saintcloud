@@ -9,6 +9,7 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/app/i18n/**/*.json'"
   },
   "dependencies": {
+    "@mdi/font": "^5.3.45",
     "buefy": "^0.8.19",
     "core-js": "^3.6.4",
     "css-utils-padding": "^0.1.0",

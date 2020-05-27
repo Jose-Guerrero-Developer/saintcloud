@@ -13,12 +13,11 @@ export default {
       breadcrumb: [
         {
           i18n: 'dashboard',
-          icon: 'fas fa-tachometer-alt',
+          icon: 'view-dashboard-outline',
           route: 'dashboard'
         },
         {
           i18n: 'statistics',
-          icon: 'fas fa-home',
           active: true
         }
       ]

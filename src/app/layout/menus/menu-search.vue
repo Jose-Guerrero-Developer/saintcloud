@@ -15,7 +15,7 @@
         <template slot-scope="props">
           <div class="media">
             <div class="media-left">
-              <b-icon icon="map-marker-alt" pack="fas" size="is-small" />
+              <b-icon icon="page-next-outline" />
             </div>
             <div class="media-content">
               {{ props.option.name }}

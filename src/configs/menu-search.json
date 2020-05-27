@@ -4,11 +4,7 @@
     "route": "dashboard"
   },
   {
-    "name": "configurations",
-    "route": "configurations"
-  },
-  {
-    "name": "login",
-    "route": "login"
+    "name": "users",
+    "route": "users"
   }
 ]

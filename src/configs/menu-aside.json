@@ -1,0 +1,24 @@
+[
+  {
+    "i18n": "dashboard",
+    "icon": "view-dashboard-outline",
+    "title": "navigation_menu",
+    "route": "dashboard"
+  },
+  {
+    "i18n": "configurations",
+    "icon": "cog-transfer-outline",
+    "submenu": [
+      {
+        "i18n": "users",
+        "icon": "account-supervisor-outline",
+        "route": "users"
+      }
+    ]
+  },
+  {
+    "i18n": "login",
+    "icon": "view-dashboard-outline",
+    "route": "login"
+  }
+]

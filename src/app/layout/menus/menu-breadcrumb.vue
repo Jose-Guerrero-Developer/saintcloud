@@ -6,7 +6,7 @@
           <li v-for="(item, index) of items" v-bind:key="index" v-bind:class="{ 'is-active': item.active }">
             <router-link :to="{ name: item.route }">
               <span class="icon is-small" v-if="!item.active">
-                <i :class="item.icon" aria-hidden="true"></i>
+                <b-icon :icon="item.icon" />
               </span>
               <span>{{ $t(item.i18n) }}</span>
             </router-link>

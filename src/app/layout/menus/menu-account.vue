@@ -2,7 +2,7 @@
   <b-dropdown position="is-bottom-left" append-to-body aria-role="menu">
     <a class="navbar-item" slot="trigger" role="button">
       <span>
-        <b-icon icon="user-circle" pack="far" size="is-medium"></b-icon>
+        <b-icon icon="account-cog-outline" size="is-medium"></b-icon>
       </span>
     </a>
     <b-dropdown-item custom aria-role="menuitem">
