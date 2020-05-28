@@ -15,7 +15,7 @@
         <template slot-scope="props">
           <div class="media">
             <div class="media-left">
-              <b-icon icon="page-next-outline" />
+              <b-icon :icon="props.option.icon" size="is-small" />
             </div>
             <div class="media-content">
               {{ props.option.name }}

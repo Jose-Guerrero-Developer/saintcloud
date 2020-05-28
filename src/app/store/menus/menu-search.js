@@ -14,7 +14,7 @@ export const menuSearch = { namespaced: true,
   },
   mutations: {
     RESTORE(state, vm) {
-      state.items = data.map(item => ({ name: vm.$t(item.name), route: item.route }))
+      state.items = data.map(item => ({ name: vm.$t(item.name), icon: item.icon, route: item.route }))
     }
   },
   getters: {
