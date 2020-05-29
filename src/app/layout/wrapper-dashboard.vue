@@ -4,12 +4,12 @@
     <section class="u-px3 u-py1">
       <div class="container is-fluid ">
         <div class="columns">
-          <div class="column is-2">
+          <div class="column is-one-fifth">
             <b-menu>
               <menu-aside :items="items"></menu-aside>
             </b-menu>
           </div>
-          <div class="column is-10">
+          <div class="column">
             <router-view></router-view>
           </div>
         </div>

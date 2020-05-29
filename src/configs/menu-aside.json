@@ -10,15 +10,26 @@
     "icon": "cog-transfer-outline",
     "submenu": [
       {
+        "i18n": "languages",
+        "icon": "translate",
+        "route": "languages"
+      },
+      {
         "i18n": "users",
         "icon": "account-supervisor-outline",
         "route": "users"
+      },
+      {
+        "i18n": "roles_and_responsibilities",
+        "icon": "account-key-outline",
+        "route": "roles_and_responsibilities"
       }
     ]
   },
   {
-    "i18n": "login",
-    "icon": "view-dashboard-outline",
+    "title": "actions",
+    "i18n": "log_off",
+    "icon": "login-variant",
     "route": "login"
   }
 ]
