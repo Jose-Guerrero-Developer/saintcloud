@@ -19,9 +19,19 @@ const routes = [
         component: () => import('@/views/dashboard')
       },
       {
+        path: '/languages',
+        name: 'languages',
+        component: () => import('@/views/languages')
+      },
+      {
         path: '/users',
         name: 'users',
         component: () => import('@/views/users')
+      },
+      {
+        path: '/roles-and-responsibilities',
+        name: 'roles-and-responsibilities',
+        component: () => import('@/views/roles-and-responsibilities')
       }
     ]
   },

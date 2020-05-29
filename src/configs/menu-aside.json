@@ -22,7 +22,7 @@
       {
         "i18n": "roles_and_responsibilities",
         "icon": "account-key-outline",
-        "route": "roles_and_responsibilities"
+        "route": "roles-and-responsibilities"
       }
     ]
   },
