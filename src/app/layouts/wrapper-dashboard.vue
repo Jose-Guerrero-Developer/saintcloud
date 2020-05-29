@@ -20,8 +20,8 @@
 
 <script type="text/javascript">
 import items from '@/configs/menu-aside'
-import menuNavbar from '@/app/layout/menus/menu-navbar'
-import menuAside  from '@/app/layout/menus/aside/menu-aside'
+import menuNavbar from '@/app/layouts/menus/navbar/menu-navbar'
+import menuAside  from '@/app/layouts/menus/aside/menu-aside'
 export default {
   name: 'wrapper-dashboard',
   data() {

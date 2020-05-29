@@ -11,7 +11,7 @@ const routes = [
   },
   {
     path: '/',
-    component: () => import('@/app/layout/wrapper-dashboard'),
+    component: () => import('@/app/layouts/wrapper-dashboard'),
     children: [
       {
         path: '/dashboard',
@@ -27,7 +27,7 @@ const routes = [
   },
   {
     path: '*',
-    component: () => import('@/app/layout/pages/not-found')
+    component: () => import('@/app/layouts/pages/not-found')
   }
 ]
 

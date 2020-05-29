@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import menuBreadcrumb from '@/app/layout/menus/menu-breadcrumb'
+import menuBreadcrumb from '@/app/layouts/menus/breadcrumb/menu-breadcrumb'
 export default {
   name: 'dashboard',
   data() {

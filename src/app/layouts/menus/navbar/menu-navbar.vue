@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import menuI18n    from '@/app/layout/menus/menu-i18n'
-import menuAccount from '@/app/layout/menus/menu-account'
-import menuSearch  from '@/app/layout/menus/menu-search'
+import menuI18n    from '@/app/layouts/menus/language/menu-i18n'
+import menuAccount from '@/app/layouts/menus/account/menu-account'
+import menuSearch  from '@/app/layouts/menus/search/menu-search'
 export default {
   name: 'menu-navbar',
   components: {

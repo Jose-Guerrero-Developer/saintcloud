@@ -4,7 +4,7 @@ import i18n   from './app/i18n/i18n'
 import store  from './app/store/store'
 import router from './app/router/router'
 
-import '@/app/layout/buefy'
+import '@/app/layouts/buefy'
 import 'css-utils-padding/lib/padding.css'
 import '@/assets/styles.scss'
 
