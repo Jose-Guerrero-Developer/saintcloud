@@ -3,7 +3,7 @@
     <template slot="brand">
       <b-navbar-item tag="router-link" :to="{ name: 'dashboard' }">
         <img
-          src="@/assets/planta.svg"
+          src="@/assets/logo.svg"
           alt="Lightweight UI components for Vue.js based on Bulma"
         />
         <span class="navbar-brand-title">Saint Cloud</span>

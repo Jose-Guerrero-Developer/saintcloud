@@ -10,6 +10,7 @@
         :keep-first   ="keepFirst"
         :open-on-focus="openOnFocus"
         @select       ="item => redirectRoutes(item)"
+        rounded
         clearable
       >
         <template slot-scope="props">

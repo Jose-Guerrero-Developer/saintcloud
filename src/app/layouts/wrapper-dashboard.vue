@@ -2,7 +2,7 @@
   <div id="wrapper-dashboard">
     <menu-navbar></menu-navbar>
     <section class="u-px3 u-py1">
-      <div class="container is-fluid ">
+      <div class="container is-fluid">
         <div class="columns">
           <div class="column is-one-fifth">
             <b-menu>
