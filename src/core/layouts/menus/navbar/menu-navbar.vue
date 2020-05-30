@@ -3,7 +3,7 @@
     <template slot="brand">
       <b-navbar-item tag="router-link" :to="{ name: 'dashboard' }">
         <img
-          src="@/assets/logo.svg"
+          src="@/assets/images/logo.svg"
           alt="Lightweight UI components for Vue.js based on Bulma"
         />
         <span class="navbar-brand-title">Saint Cloud</span>
@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import menuI18n    from '@/app/layouts/menus/language/menu-i18n'
-import menuAccount from '@/app/layouts/menus/account/menu-account'
-import menuSearch  from '@/app/layouts/menus/search/menu-search'
+import menuI18n    from '@/core/layouts/menus/language/menu-i18n'
+import menuAccount from '@/core/layouts/menus/account/menu-account'
+import menuSearch  from '@/core/layouts/menus/search/menu-search'
 export default {
   name: 'menu-navbar',
   components: {

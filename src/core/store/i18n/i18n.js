@@ -24,7 +24,12 @@ const validateLocaleState = () => {
  */
 export const i18n = { namespaced: true,
   state: {
-    locale: validateLocaleState()
+    locale: validateLocaleState(),
+    languages: [
+      { locale: 'es', i18n: 'spanish', flag: 'es.svg' },
+      { locale: 'en', i18n: 'english', flag: 'us.svg' },
+      { locale: 'fr', i18n: 'french',  flag: 'fr.svg' }
+    ]
   },
   actions: {
     handlerLocale({ commit }, locale) {
@@ -38,6 +43,7 @@ export const i18n = { namespaced: true,
     }
   },
   getters: {
-    locale: state => state.locale
+    locale: state => state.locale,
+    languages: state => state.languages
   }
 }
