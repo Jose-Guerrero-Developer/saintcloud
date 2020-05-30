@@ -1,4 +1,6 @@
-import { LOCALE } from '../constants'
+import {
+  LOCALE,
+  SET_LOCALE } from '../constants'
 
 /**
  * En: Handler validate locale language state
@@ -32,18 +34,32 @@ export const i18n = { namespaced: true,
     ]
   },
   actions: {
-    handlerLocale({ commit }, locale) {
-      commit('LOCALE', locale)
+    [SET_LOCALE]({ commit }, { vm, locale }) {
+      commit('LOCALE', {vm, locale})
     }
   },
   mutations: {
-    [LOCALE]( state, locale) {
-      state.locale = locale
-      localStorage.setItem('locale', locale)
+    [LOCALE]( state, { vm, locale }) {
+      const loading   = vm.$buefy.loading.open({ container: null })
+      setTimeout(() => {
+        loading.close()
+        vm.$i18n.locale = locale
+        state.locale    = locale
+        localStorage.setItem('locale', locale)
+      }, 0.5 * 1000)
     }
   },
   getters: {
-    locale: state => state.locale,
-    languages: state => state.languages
+    locale:    state => state.locale,
+    languages: state => state.languages,
+    selected:  state => {
+      let selected = ''
+      state.languages.forEach(({ locale, i18n, flag }) => {
+        if (locale === state.locale) {
+          selected = { locale, i18n, flag}
+        }
+      })
+      return selected
+    }
   }
 }

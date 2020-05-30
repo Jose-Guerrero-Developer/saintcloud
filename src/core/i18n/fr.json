@@ -3,6 +3,8 @@
   "configurations": "Configurations",
   "dashboard": "Conseil d'administration",
   "english": "Anglais",
+  "established_language": "Langue établie",
+  "flag": "Drapeau",
   "french": "Français",
   "languages": "Langues",
   "log_off": "Se déconnecter",
@@ -13,5 +15,6 @@
   "set_language": "Définir la langue",
   "spanish": "Espagnol",
   "statistics": "Statistiques",
+  "status": "Statut",
   "users": "Utilisateurs"
 }

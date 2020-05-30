@@ -3,7 +3,7 @@ module.exports = {
     i18n: {
       locale: 'en',
       fallbackLocale: 'en',
-      localeDir: 'app/i18n',
+      localeDir: 'core/i18n',
       enableInSFC: false
     }
   }

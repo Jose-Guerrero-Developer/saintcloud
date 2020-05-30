@@ -3,6 +3,8 @@
   "configurations": "Configurations",
   "dashboard": "Dashboard",
   "english": "English",
+  "established_language": "Established language",
+  "flag": "Flag",
   "french": "French",
   "languages": "Languages",
   "log_off": "Log off",
@@ -13,5 +15,6 @@
   "set_language": "Set language",
   "spanish": "Spanish",
   "statistics": "Statistics",
+  "status": "Status",
   "users": "Users"
 }
