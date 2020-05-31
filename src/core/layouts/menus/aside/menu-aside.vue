@@ -79,14 +79,18 @@
 
 <script>
 export default {
-  name: 'menu-aside',
+  name:  'menu-aside',
   props: { items: Array, isChild: Boolean },
   data() {
-    return {
-      isActive: true
-    }
+    return { isActive: true }
   },
   methods: {
+    /**
+     * En: Addressing to a specific route
+     * Es: Direccionamiento a una ruta en especifico
+     * @param  String route
+     * @return Promise
+     */
     async redirectRoute(route) {
       if (this.$route.name !== route) {
         this.$router.push({ name: route })

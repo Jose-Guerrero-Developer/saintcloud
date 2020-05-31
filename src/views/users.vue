@@ -11,20 +11,11 @@ export default {
   data() {
     return {
       breadcrumb: [
-        {
-          i18n: 'users',
-          icon: 'account-supervisor-outline',
-          route: 'users'
-        },
-        {
-          i18n: 'statistics',
-          active: true
-        }
+        { i18n: 'users', icon: 'account-supervisor-outline', route: 'users' },
+        { i18n: 'statistics', active: true }
       ]
     }
   },
-  components: {
-    menuBreadcrumb
-  }
+  components: { menuBreadcrumb }
 }
 </script>

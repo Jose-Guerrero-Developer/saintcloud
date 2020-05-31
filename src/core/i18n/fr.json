@@ -1,5 +1,6 @@
 {
   "actions": "Actions",
+  "application_name": "Saint Cloud",
   "configurations": "Configurations",
   "dashboard": "Conseil d'administration",
   "english": "Anglais",
@@ -10,6 +11,7 @@
   "log_off": "Se déconnecter",
   "login": "S'identifier",
   "navigation_menu": "Menu de navigation",
+  "page_not_found": "Page non trouvée",
   "roles_and_responsibilities": "Rôles et responsabilités",
   "search": "Recherchez",
   "set_language": "Définir la langue",

@@ -94,8 +94,8 @@ export default {
   },
   methods: {
     /**
-     * En: (Click event)  => Swap languages in the application
-     * Es: (Evento click) => Intercambia los idiomas en la aplicación
+     * En: (Click event)  Swap languages in the application
+     * Es: (Evento click) Intercambia los idiomas en la aplicación
      * @return Promise
      */
     async setI18n(locale) {

@@ -11,20 +11,11 @@ export default {
   data() {
     return {
       breadcrumb: [
-        {
-          i18n: 'dashboard',
-          icon: 'view-dashboard-outline',
-          route: 'dashboard'
-        },
-        {
-          i18n: 'statistics',
-          active: true
-        }
+        { i18n: 'dashboard', icon: 'view-dashboard-outline', route: 'dashboard' },
+        { i18n: 'statistics', active: true }
       ]
     }
   },
-  components: {
-    menuBreadcrumb
-  }
+  components: { menuBreadcrumb }
 }
 </script>

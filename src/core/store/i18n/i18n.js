@@ -1,4 +1,9 @@
+/**
+ * En: Importing constant settings
+ * Es: Importando configuración de constantes
+ */
 import {
+  Locale, Selected, Languages,
   LOCALE,
   SET_LOCALE } from '../constants'
 
@@ -21,7 +26,7 @@ const validateLocaleState = () => {
 
 /**
  * En: Language module manager
- * Es: Gestor para modulo de idiomas
+ * Es: Gestor modulo de idiomas
  * @return {state, actions, mutations, getters}
  */
 export const i18n = { namespaced: true,
@@ -34,15 +39,26 @@ export const i18n = { namespaced: true,
     ]
   },
   actions: {
-    [SET_LOCALE]({ commit }, { vm, locale }) {
-      commit('LOCALE', {vm, locale})
+    /**
+     * En: Set the language change
+     * Es: Estable el cambio de idioma
+     * @param {*} commit
+     * @param {*} vm, locale 
+     */
+    [SET_LOCALE]: ({ commit }, { vm, locale }) => {
+      commit(LOCALE, {vm, locale})
     }
   },
   mutations: {
-    [LOCALE]( state, { vm, locale }) {
-      const loading   = vm.$buefy.loading.open({ container: null })
-      setTimeout(() => {
-        loading.close()
+    /**
+     * En: Set the language change
+     * Es: Estable el cambio de idioma
+     * @param {*} state 
+     * @param {*} vm, locale 
+     */
+    [LOCALE]: ( state, { vm, locale }) => {
+      const loading  = vm.$buefy.loading.open({ container: null })
+      setTimeout(()  => { loading.close()
         vm.$i18n.locale = locale
         state.locale    = locale
         localStorage.setItem('locale', locale)
@@ -50,13 +66,31 @@ export const i18n = { namespaced: true,
     }
   },
   getters: {
-    locale:    state => state.locale,
-    languages: state => state.languages,
-    selected:  state => {
+    /**
+     * En: Returns the current language set
+     * Es: Retorna el idioma actual establecido
+     * @param  {*} state
+     * @return String
+     */
+    [Locale]: state => state.locale,
+    /**
+     * En: Returns a matrix with the current language settings
+     * Es: Retorna una matriz con las configuraciones de idiomas actual
+     * @param  {*} state
+     * @return Array
+     */
+    [Languages]: state => state.languages,
+    /**
+     * En: Returns the currently selected language setting
+     * Es: Retorna la configuración de idioma seleccionada actualmente
+     * @param  {*} state
+     * @return {locale, i18n, flag}
+     */
+    [Selected]: state => {
       let selected = ''
       state.languages.forEach(({ locale, i18n, flag }) => {
         if (locale === state.locale) {
-          selected = { locale, i18n, flag}
+          selected = { locale, i18n, flag }
         }
       })
       return selected

@@ -53,7 +53,7 @@ export default {
     }
   },
   components: {
-    menuBreadcrumb, tableLanguages
+    tableLanguages, menuBreadcrumb
   },
   computed: {
     ...mapGetters({ languages: 'i18n/languages', selected: 'i18n/selected' })

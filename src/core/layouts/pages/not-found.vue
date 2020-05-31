@@ -1,6 +1,6 @@
 <template>
-  <div id="not-found">
-    Página no encontrada...
+  <div id = "not-found">
+    {{ $t('page_not_found') }}...
   </div>
 </template>
 

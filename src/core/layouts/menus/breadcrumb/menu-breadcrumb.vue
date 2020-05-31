@@ -19,9 +19,7 @@
 
 <script>
 export default {
-  name: 'menu-breadcrumb',
-  props: {
-    items: Array
-  }
+  name:  'menu-breadcrumb',
+  props: { items: Array }
 }
 </script>

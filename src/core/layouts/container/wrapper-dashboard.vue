@@ -19,19 +19,16 @@
 </template>
 
 <script type="text/javascript">
-import items from '@/configs/menu-aside'
-import menuNavbar from '@/core/layouts/menus/navbar/menu-navbar'
+import items      from '@/configs/menu-aside'
 import menuAside  from '@/core/layouts/menus/aside/menu-aside'
+import menuNavbar from '@/core/layouts/menus/navbar/menu-navbar'
 export default {
   name: 'wrapper-dashboard',
   data() {
-    return {
-      items
-    }
+    return { items }
   },
   components: {
-    menuNavbar,
-    menuAside
+    menuAside, menuNavbar
   }
 }
 </script>

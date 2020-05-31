@@ -11,20 +11,11 @@ export default {
   data() {
     return {
       breadcrumb: [
-        {
-          i18n: 'roles_and_responsibilities',
-          icon: 'translate',
-          route: 'roles-and-responsibilities'
-        },
-        {
-          i18n: 'statistics',
-          active: true
-        }
+        { i18n: 'roles_and_responsibilities', icon: 'translate', route: 'roles-and-responsibilities' },
+        { i18n: 'statistics', active: true }
       ]
     }
   },
-  components: {
-    menuBreadcrumb
-  }
+  components: { menuBreadcrumb }
 }
 </script>

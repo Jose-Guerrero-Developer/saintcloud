@@ -1,5 +1,6 @@
 {
   "actions": "Acciones",
+  "application_name": "Saint Cloud",
   "configurations": "Configuraciones",
   "dashboard": "Tablero",
   "english": "Inglés",
@@ -10,6 +11,7 @@
   "log_off": "Cerrar sesión",
   "login": "Iniciar sesión",
   "navigation_menu": "Menú navegación",
+  "page_not_found": "Página no encontrada",
   "roles_and_responsibilities": "Roles y permisos",
   "search": "Buscar",
   "set_language": "Establecer idioma",
