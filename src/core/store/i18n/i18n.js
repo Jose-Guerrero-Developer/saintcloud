@@ -88,11 +88,12 @@ export const i18n = { namespaced: true,
      */
     [Selected]: state => {
       let selected = ''
-      state.languages.forEach(({ locale, i18n, flag }) => {
-        if (locale === state.locale) {
+      for (const { locale, i18n, flag } of state.languages) {
+        if (state.locale === locale) {
           selected = { locale, i18n, flag }
+          break
         }
-      })
+      }
       return selected
     }
   }
