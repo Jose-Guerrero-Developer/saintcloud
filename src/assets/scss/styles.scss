@@ -1,6 +1,6 @@
 @import "~bulma/sass/utilities/_all";
 
-$primary: #6DC54A;
+$primary: #5a45ff;
 $primary-invert: findColorInvert($primary);
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
@@ -18,6 +18,8 @@ $colors: (
     "twitter": ($twitter, $twitter-invert)
 );
 
+$body-color: #b1bacc;
+
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
@@ -25,8 +27,16 @@ $link-focus-border: $primary;
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
+body {
+  color: $body-color;
+}
+
 body > div > div > div {
   top: 38px !important;
+}
+
+.navbar {
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,.02), 0 4px 6px 0 rgba(0,0,0,.03);
 }
 
 .navbar-brand-title {
@@ -34,6 +44,7 @@ body > div > div > div {
   font-weight: bold;
   margin-left: .2em;
 }
+
 .navbar-item img {
   max-height: 3rem;
 }
@@ -47,6 +58,20 @@ body > div > div > div {
   display: flex;
   align-items: center;
   margin-right: .5em;
+}
+
+.input, .taginput .taginput-container.is-focusable, .textarea {
+  border: 2.5px solid #f7f8fa;
+  box-shadow: none;
+}
+
+.input:hover, .taginput .taginput-container.is-focusable:hover, .textarea:hover, .select select:hover, .is-hovered.input, .taginput .is-hovered.taginput-container.is-focusable, .is-hovered.textarea, .select select.is-hovered {
+  border-color: #b5b5b524;
+}
+
+.input:focus, .taginput .taginput-container.is-focusable:focus, .textarea:focus, .select select:focus, .is-focused.input, .taginput .is-focused.taginput-container.is-focusable, .is-focused.textarea, .select select.is-focused, .input:active, .taginput .taginput-container.is-focusable:active, .textarea:active, .select select:active, .is-active.input, .taginput .is-active.taginput-container.is-focusable, .is-active.textarea, .select select.is-active {
+  border-color: #b1bacc24;
+  box-shadow: none;
 }
 
 .dropdown {
@@ -65,4 +90,9 @@ body > div > div > div {
 #wrapper-dashboard > nav > div > div.navbar-menu > div.navbar-end > div > div.dropdown-trigger {
   display: flex;
   align-items: center;
+}
+
+.menu-label {
+  color: $body-color;
+  font-weight: $weight-semibold;
 }

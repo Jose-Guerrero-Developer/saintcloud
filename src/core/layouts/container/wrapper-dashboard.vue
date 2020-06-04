@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper-dashboard">
     <menu-navbar></menu-navbar>
-    <section class="u-px3 u-py1">
+    <section class="u-px3 u-py3">
       <div class="container is-fluid">
         <div class="columns">
           <div class="column is-one-fifth">
