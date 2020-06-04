@@ -46,7 +46,7 @@ export default {
           route: 'languages'
         },
         {
-          i18n: 'statistics',
+          i18n: 'administer',
           active: true
         }
       ]

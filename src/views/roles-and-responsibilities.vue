@@ -12,7 +12,7 @@ export default {
     return {
       breadcrumb: [
         { i18n: 'roles_and_responsibilities', icon: 'translate', route: 'roles-and-responsibilities' },
-        { i18n: 'statistics', active: true }
+        { i18n: 'administer', active: true }
       ]
     }
   },

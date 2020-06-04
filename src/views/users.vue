@@ -12,7 +12,7 @@ export default {
     return {
       breadcrumb: [
         { i18n: 'users', icon: 'account-supervisor-outline', route: 'users' },
-        { i18n: 'statistics', active: true }
+        { i18n: 'administer', active: true }
       ]
     }
   },
