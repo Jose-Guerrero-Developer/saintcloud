@@ -19,7 +19,7 @@
 </template>
 
 <script type="text/javascript">
-import items      from '@/configs/menu-aside'
+import items      from '@/configs/menus/aside'
 import menuAside  from '@/core/layouts/menus/aside/menu-aside'
 import menuNavbar from '@/core/layouts/menus/navbar/menu-navbar'
 export default {

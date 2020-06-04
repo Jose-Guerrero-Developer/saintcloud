@@ -2,7 +2,7 @@
  * En: Importing list of items for the search menu
  * Es: Importando de lista elementos para el menú de búsqueda
  */
-import data from '@/configs/menu-search'
+import data from '@/configs/menus/search'
 import {
   Items, Restore,
   RESTORE } from '../constants'
