@@ -10,6 +10,8 @@ import Users                    from '@/views/users'
 import NotFound                 from '@/core/layouts/pages/not-found'
 import Dashboard                from '@/views/dashboard'
 import Languages                from '@/views/languages'
+import WrapperAuth              from '@/core/layouts/container/wrapper-auth'
+import ForgotPassword           from '@/views/forgot-password'
 import WrapperDashboard         from '@/core/layouts/container/wrapper-dashboard'
 import RolesAndResponsibilities from '@/views/roles-and-responsibilities'
 
@@ -21,11 +23,20 @@ Vue.use(VueRouter)
  * @return Array
  */
 const routes = Array(
-  /**
-   * En: Login Path
-   * Es: Ruta de inicio de sesión
-   */
-  { path: '/', name: 'login', component: Login },
+  { path: '/', component: WrapperAuth,
+    children: [
+      /**
+       * En: Login Path
+       * Es: Ruta de inicio de sesión
+       */
+      { path: '/', name: 'login', component: Login },
+      /**
+       * En: Password reset path
+       * Es: Ruta de restablecer contraseña
+       */
+      { path: '/forgot-password', name: 'forgot-password', component: ForgotPassword },
+    ]
+  },
   /**
    * En: Structure containing the template for the board
    * Es: Estructura que contiene la plantilla para el tablero

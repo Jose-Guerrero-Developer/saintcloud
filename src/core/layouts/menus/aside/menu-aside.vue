@@ -78,12 +78,11 @@
 </template>
 
 <script>
-export default {
-  name:  'menu-aside',
+export default { name:  'menu-aside',
   props: { items: Array, isChild: Boolean },
-  data() {
-    return { isActive: true }
-  },
+  data: () => ({ 
+    isActive: true
+  }),
   methods: {
     /**
      * En: Addressing to a specific route

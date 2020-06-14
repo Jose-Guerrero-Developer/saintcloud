@@ -1,9 +1,26 @@
 <template>
-  <div id="languages">
-    <menu-breadcrumb :items="breadcrumb"></menu-breadcrumb>
-    <div class="columns">
-      <div class="column">
-        <table class="table is-bordered is-narrow">
+  <div
+    id = "languages"
+  >
+    <menu-breadcrumb
+      :items = "breadcrumb" />
+    <div
+      class = "
+        columns
+      "
+    >
+      <div
+        class = "
+          column
+        "
+      >
+        <table
+          class = "
+            table
+            is-narrow
+            is-bordered
+          "
+        >
           <tfoot>
             <tr>
               <th>{{ $t('flag') }}</th>
@@ -13,8 +30,14 @@
           <tbody>
             <tr>
               <td>
-                <figure class="image is-24x24">
-                  <img :src="require(`@/assets/images/flags/${ selected.flag }`)" />
+                <figure
+                  class = "
+                    image
+                    is-24x24
+                  "
+                >
+                  <img
+                    :src = "require(`@/assets/images/flags/${ selected.flag }`)" />
                 </figure>
               </td>
               <td>{{ $t(selected.i18n) }}</td>
@@ -23,9 +46,20 @@
         </table>
       </div>
     </div>
-    <div class="columns is-multiline is-mobile">
-      <div class="column">
-        <table-languages :items="languages" />
+    <div
+      class = "
+        columns
+        is-mobile
+        is-multiline
+      "
+    >
+      <div
+        class = "
+          column
+        "
+      >
+        <table-languages
+          :items = "languages" />
       </div>
     </div>
   </div>
@@ -35,23 +69,20 @@
 import { mapGetters } from 'vuex'
 import menuBreadcrumb from '@/core/layouts/menus/breadcrumb/menu-breadcrumb'
 import tableLanguages from '@/components/language/table-languages'
-export default {
-  name: 'languages',
-  data() {
-    return {
-      breadcrumb: [
-        {
-          i18n: 'languages',
-          icon: 'translate',
-          route: 'languages'
-        },
-        {
-          i18n: 'administer',
-          active: true
-        }
-      ]
-    }
-  },
+export default { name: 'languages',
+  data: () => ({
+    breadcrumb: [
+      {
+        i18n: 'languages',
+        icon: 'translate',
+        route: 'languages'
+      },
+      {
+        i18n: 'administer',
+        active: true
+      }
+    ]
+  }),
   components: {
     tableLanguages, menuBreadcrumb
   },
