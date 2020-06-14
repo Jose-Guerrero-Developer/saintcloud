@@ -26,6 +26,12 @@ import router from './core/router/router'
 import '@/core/validation/vee-validate'
 
 /**
+ * En: Set the instance with Axios
+ * Es: Establece la instancia con Axios
+ */
+import '@/core/http/axios'
+
+/**
  * En: Importing style configuration files
  * Es: Importando ficheros de configuración de estilos
  */
