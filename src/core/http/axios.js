@@ -1,5 +1,6 @@
-import Vue   from 'vue'
-import axios from 'axios'
+import Vue             from 'vue'
+import axios           from 'axios'
+import * as Httpstatus from 'http-status-codes'
 
 /**
  * En: Setting up Axios instance configurations
@@ -8,7 +9,7 @@ import axios from 'axios'
 let config = {
   baseURL:         process.env.VUE_APP_API_BASE_URL || '',
   timeout:         60 * 1000,
-  withCredentials: true
+  withCredentials: false
 }
 const _axios = axios.create(config);
 _axios.interceptors.request.use(
@@ -24,6 +25,9 @@ Plugin.install = function(Vue) { Vue.axios = _axios
   Object.defineProperties(Vue.prototype, {
     $http: {
       get: () => _axios
+    },
+    $httpStatus: {
+      get: () => Httpstatus
     }
   })
 }
