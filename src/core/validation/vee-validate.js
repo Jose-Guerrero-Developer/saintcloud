@@ -3,6 +3,7 @@ import * as rules from 'vee-validate/dist/rules'
 import i18n       from '../i18n/i18n'
 import {
   extend,
+  ValidationObserver,
   ValidationProvider } from 'vee-validate'
 
 /**
@@ -20,4 +21,5 @@ for (let [rule, validation] of Object.entries(rules)) {
  * En: Register component validation provider globally
  * Es: Registrar componente validation provider de forma global
  */
+Vue.component('ValidationObserver', ValidationObserver)
 Vue.component('ValidationProvider', ValidationProvider)

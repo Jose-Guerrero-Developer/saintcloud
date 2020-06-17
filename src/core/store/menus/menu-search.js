@@ -12,7 +12,7 @@ import {
  * Es: Gestor modulo menú de búsqueda
  * @return {state, actions, mutations, getters}
  */
-export const menuSearch = { namespaced: true,
+export const MenuSearch = { namespaced: true,
   state: {
     items: Array()
   },

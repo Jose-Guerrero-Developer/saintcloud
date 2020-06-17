@@ -4,6 +4,8 @@
   "all_rights_reserved": "All rights reserved",
   "application_name": "Saint Cloud",
   "application_version": "v1.0",
+  "are_not_valid": "are not valid",
+  "authentication": "Authentication",
   "configurations": "Configurations",
   "dashboard": "Dashboard",
   "email": "Email",
@@ -25,6 +27,7 @@
   "spanish": "Spanish",
   "statistics": "Statistics",
   "status": "Status",
+  "the_data_provided_as_credentials": "The data provided as credentials",
   "users": "Users",
   "welcome": "Welcome"
 }

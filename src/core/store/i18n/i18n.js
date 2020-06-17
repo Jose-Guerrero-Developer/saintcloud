@@ -29,7 +29,7 @@ const validateLocaleState = () => {
  * Es: Gestor modulo de idiomas
  * @return {state, actions, mutations, getters}
  */
-export const i18n = { namespaced: true,
+export const I18n = { namespaced: true,
   state: {
     locale: validateLocaleState(),
     languages: [

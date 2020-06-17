@@ -32,8 +32,8 @@
 <script>
 export default { name: "forgot-password",
   data: () => ({
-    email:    String(),
-    password: String()
+    email:    '',
+    password: ''
   }),
   methods: {
     login() {

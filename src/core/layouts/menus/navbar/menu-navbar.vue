@@ -10,7 +10,7 @@
         tag = "router-link"
       >
         <!-- logo application -->
-        <img src = "@/assets/images/logo.svg" />
+        <img :src = "require('@/assets/images/logo.svg')" />
         <!-- brand application name -->
         <span
           class  = "navbar-brand-title"

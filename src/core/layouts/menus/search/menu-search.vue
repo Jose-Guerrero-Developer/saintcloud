@@ -32,14 +32,12 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  data() {
-    return {
-      name:        '',
-      keepFirst:   true,
-      openOnFocus: true,
-      selected:    null
-    }
-  },
+  data: () => ({
+    name:        '',
+    keepFirst:   true,
+    openOnFocus: true,
+    selected:    null
+  }),
   methods: {
     /**
      * En: Addressing to a specific route
