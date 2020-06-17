@@ -4,7 +4,7 @@
  */
 import data from '@/configs/menus/search'
 import {
-  Items, Restore,
+  items, restore,
   RESTORE } from '../constants'
 
 /**
@@ -23,7 +23,7 @@ export const MenuSearch = { namespaced: true,
      * @param {*} commit
      * @param {*} vm
      */
-    [Restore]: ({ commit }, vm) => commit(RESTORE, vm) 
+    [restore]: ({ commit }, vm) => commit(RESTORE, vm) 
   },
   mutations: {
     /**
@@ -41,6 +41,6 @@ export const MenuSearch = { namespaced: true,
      * @param  {*} state
      * @return Array
      */
-    [Items]: state => state.items 
+    [items]: state => state.items 
   }
 }

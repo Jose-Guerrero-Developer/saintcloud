@@ -3,7 +3,7 @@
  * Es: Importando configuración de constantes
  */
 import {
-  Locale, Selected, Languages,
+  locale, selected, languages,
   LOCALE,
   SET_LOCALE } from '../constants'
 
@@ -72,21 +72,21 @@ export const I18n = { namespaced: true,
      * @param  {*} state
      * @return String
      */
-    [Locale]: state => state.locale,
+    [locale]: state => state.locale,
     /**
      * En: Returns a matrix with the current language settings
      * Es: Retorna una matriz con las configuraciones de idiomas actual
      * @param  {*} state
      * @return Array
      */
-    [Languages]: state => state.languages,
+    [languages]: state => state.languages,
     /**
      * En: Returns the currently selected language setting
      * Es: Retorna la configuración de idioma seleccionada actualmente
      * @param  {*} state
      * @return {locale, i18n, flag}
      */
-    [Selected]: state => {
+    [selected]: state => {
       let selected = ''
       for (const { locale, i18n, flag } of state.languages) {
         if (state.locale === locale) {
