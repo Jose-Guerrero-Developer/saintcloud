@@ -7,6 +7,7 @@ import VueRouter from 'vue-router'
  */
 import Login                    from '@/views/login'
 import Users                    from '@/views/users'
+import SignOut                  from '@/views/sign-out'
 import NotFound                 from '@/core/layouts/pages/not-found'
 import Dashboard                from '@/views/dashboard'
 import Languages                from '@/views/languages'
@@ -23,6 +24,15 @@ Vue.use(VueRouter)
  * @return Array
  */
 const routes = Array(
+  /**
+   * En: Profile Logout Path
+   * Es: Ruta de cerrar sesión de perfil
+   */
+  { path: '/sign-out', name: 'sign-out', component: SignOut },
+  /**
+   * En: Credentials authentication route group
+   * Es: Grupo de rutas de autentificación de credenciales
+   */
   { path: '/', component: WrapperAuth,
     children: [
       /**

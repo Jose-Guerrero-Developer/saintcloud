@@ -30,6 +30,6 @@
     "title": "actions",
     "i18n": "log_off",
     "icon": "login-variant",
-    "route": "login"
+    "route": "sign-out"
   }
 ]

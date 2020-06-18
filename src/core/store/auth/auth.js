@@ -1,6 +1,9 @@
 import { 
   SIGN_IN,
-  SET_CREDENTIALS } from '../constants'
+  SIGN_OUT,
+  is_active,
+  SET_CREDENTIALS,
+  DELETE_CREDENTIALS } from '../constants'
 
 /**
  * En: User authentication module management
@@ -11,8 +14,9 @@ export const Auth = { namespaced: true,
   state: {
     typeToken:     '',
     accessToken:   '',
-    expiresIn:     0,
-    signatureDate: ''
+    expiresIn:     '',
+    signatureDate: '',
+    isActive:      false
   },
   actions: {
     /**
@@ -21,7 +25,13 @@ export const Auth = { namespaced: true,
      * @param {*} commit
      * @param {Vue, credentials}
      */
-    [SIGN_IN]: ({ commit }, { Vue, credentials }) => commit(SET_CREDENTIALS, { Vue, credentials })  
+    [SIGN_IN]: ({ commit }, { Vue, credentials }) => commit(SET_CREDENTIALS, { Vue, credentials }),
+    /**
+     * En: Close the open profile session
+     * Es: Cerrar la sesión de perfil abierta
+     * @param {*} commit
+     */
+    [SIGN_OUT]: ({ commit }) => commit(DELETE_CREDENTIALS)
   },
   mutations: {
     /**
@@ -44,6 +54,7 @@ export const Auth = { namespaced: true,
         state.accessToken   = accessToken
         state.expiresIn     = expiresIn
         state.signatureDate = signatureDate
+        state.isActive      = true
         localStorage.setItem('credentials', JSON.stringify({ typeToken, accessToken, expiresIn, signatureDate }))
         $store.dispatch('profile/build', profile)
         $http
@@ -53,9 +64,29 @@ export const Auth = { namespaced: true,
         transaction                = true
       } catch (error)              { transaction = false }
       return transaction
+    },
+    /**
+     * En: Delete open session data
+     * Es: Eliminar los datos de sesión abierta
+     * @param {*} state
+     */
+    [DELETE_CREDENTIALS]: (state) => {
+      state.typeToken     = ''
+      state.accessToken   = ''
+      state.expiresIn     = ''
+      state.signatureDate = ''
+      state.isActive      = false
+      localStorage.setItem('profile', JSON.stringify({}))
+      localStorage.setItem('credentials', JSON.stringify({})) 
     }
   },
   getters: {
-
+    /**
+     * En: Returns profile session status
+     * Es: Retorna el estado de la sesión de perfil
+     * @param {*} state
+     * @return boolean
+     */
+    [is_active]: state => state.isActive 
   }
 }
