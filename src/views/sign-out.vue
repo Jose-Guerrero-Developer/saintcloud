@@ -44,7 +44,7 @@ export default { name: 'sign-out',
       }
       await $http.post('auth/logout').then(({ status }) => {
         if (status === $httpStatus.OK) {
-          $store.dispatch('auth/sign-out')
+          $store.dispatch('auth/sign-out', this)
           setTimeout(() => {
             $router.push({ name: 'login' })
           }, 800)

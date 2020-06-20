@@ -96,8 +96,52 @@ const router = new VueRouter({
  * Es: Establece configuraciones antes de cargar el sistema de rutas
  */
 router.beforeEach((to, from, next) => {
-  const { $i18n, $store } = router.app
-  $i18n.locale = $store.getters['i18n/locale']
+  const Vue = router.app
+  const {
+    name: currentRouting } = to
+  const {
+    $http,
+    $i18n,
+    $store,
+    $httpStatus } = Vue
+  $i18n.locale    = $store.getters['i18n/locale']
+  // En: Upload all local storage configurations to the Vuex store
+  // Es: Cargar todas la configuraciones del local storage a la tienda de Vuex
+  if ($store.getters['app/route-is-reloaded']) { $store.dispatch('app/load-inital-state', Vue) }
+  // En: Validate if there is an active session when you are in the login path
+  // Es: Validar si existe una sesión activa cuando este en la ruta de inicio de sesión
+  if (currentRouting === 'login' && $store.getters['auth/is-active']) {
+    $http.get('auth/is-valid-token')
+      .then(({ status }) => {
+        if (status === $httpStatus.OK) {
+          router
+            .push({ name: 'dashboard' })
+        }
+      })
+      .catch(() => {
+        $store
+          .dispatch('auth/sign-out', Vue)
+      })
+  }
+  // En: Validate if there is an active session and if you have the access permissions
+  // Es: Validar si existe una sesión activa y si cuenta con los permisos de acceso
+  if (currentRouting !== 'login' && $store.getters['auth/is-active']) {
+    $http.get('auth/is-valid-token')
+      .catch(() => {
+        $store
+          .dispatch('auth/sign-out', Vue)
+        router
+          .push({ name: 'login' })
+      })
+  }
+  // En: Validate if there is no session with login credentials
+  // Es: Validar si no existe una sesión con credenciales de acceso
+  if (currentRouting !== 'login' && !$store.getters['auth/is-active']) {
+    $store
+      .dispatch('auth/sign-out', Vue)
+    router
+      .push({ name: 'login' })
+  }
   next()
 })
 

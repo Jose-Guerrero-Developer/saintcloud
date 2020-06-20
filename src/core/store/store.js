@@ -5,11 +5,13 @@ import Vuex from 'vuex'
  * En: Importing module configuration and constants
  * Es: Importando configuración de módulos y constantes
  */
+import { App       } from './app/app'
 import { Auth       } from './auth/auth'
 import { Profile    } from './profile/profile'
 import { I18n       } from './i18n/i18n'
 import { MenuSearch } from './menus/menu-search'
 import {
+  APP,
   AUTH,
   I18N,
   PROFILE,
@@ -24,6 +26,11 @@ Vue.use(Vuex)
  */
 export default new Vuex.Store({
   modules: {
+    /**
+     * En: Application module
+     * Es: Módulo aplicación
+     */
+    [APP]: App,
     /**
      * En: Authentication module
      * Es: Módulo autentificación

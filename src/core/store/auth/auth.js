@@ -1,4 +1,6 @@
-import { 
+import {
+  LOAD,
+  INITIAL,
   SIGN_IN,
   SIGN_OUT,
   is_active,
@@ -20,6 +22,13 @@ export const Auth = { namespaced: true,
   },
   actions: {
     /**
+     * En: Initialize the settings for the module
+     * Es: Inicializar las configuraciones para el módulo
+     * @param {*} commit
+     * @param {Vue, properties}
+     */
+    [INITIAL]: ({ commit }, { Vue, properties }) => commit(LOAD, { Vue, properties }),
+    /**
      * En: Request access credentials
      * Es: Solicitar credenciales de acceso
      * @param {*} commit
@@ -30,10 +39,37 @@ export const Auth = { namespaced: true,
      * En: Close the open profile session
      * Es: Cerrar la sesión de perfil abierta
      * @param {*} commit
+     * @param {*} Vue
      */
-    [SIGN_OUT]: ({ commit }) => commit(DELETE_CREDENTIALS)
+    [SIGN_OUT]: ({ commit }, Vue) => commit(DELETE_CREDENTIALS, Vue)
   },
   mutations: {
+    /**
+     * En: Load the configurations for the module
+     * Es: Cargar las configuraciones para el módulo
+     * @param {*} state
+     * @param {Vue, properties}
+     */
+    [LOAD]: (state, { Vue, properties }) => {
+      const {
+        $http, $storage } = Vue
+      const {
+        typeToken,
+        accessToken,
+        expiresIn,
+        signatureDate,
+        isActive        } = properties
+      state.typeToken     = typeToken
+      state.accessToken   = accessToken
+      state.expiresIn     = expiresIn
+      state.signatureDate = signatureDate
+      state.isActive      = isActive
+      $storage.set('auth', { typeToken, accessToken, expiresIn, signatureDate, isActive })
+      $http
+        .defaults
+        .headers
+        .common['Authorization'] = `${ typeToken } ${ accessToken }`
+    },
     /**
      * En: Establish access credentials
      * Es: Estable las credenciales de acceso
@@ -41,22 +77,27 @@ export const Auth = { namespaced: true,
      * @param {Vue, credentials}
      */
     [SET_CREDENTIALS]: (state, { Vue, credentials }) => {
-      const { $http, $store } = Vue
+      const {
+        $http,
+        $store, $storage } = Vue
       const {
         token_type:   typeToken,
         access_token: accessToken,
         expires_in:   expiresIn,
-        profile                    } = credentials
+        profile                     } = credentials
       let transaction       = undefined
       const signatureDate   = Date.now()
+      const isActive        = true
       try {
         state.typeToken     = typeToken
         state.accessToken   = accessToken
         state.expiresIn     = expiresIn
         state.signatureDate = signatureDate
-        state.isActive      = true
-        localStorage.setItem('credentials', JSON.stringify({ typeToken, accessToken, expiresIn, signatureDate }))
-        $store.dispatch('profile/build', profile)
+        state.isActive      = isActive
+        $storage
+          .set('auth', { typeToken, accessToken, expiresIn, signatureDate, isActive })
+        $store
+          .dispatch('profile/initial', { Vue, properties: profile })
         $http
           .defaults
           .headers
@@ -69,15 +110,20 @@ export const Auth = { namespaced: true,
      * En: Delete open session data
      * Es: Eliminar los datos de sesión abierta
      * @param {*} state
+     * @param {*} Vue
      */
-    [DELETE_CREDENTIALS]: (state) => {
+    [DELETE_CREDENTIALS]: (state, Vue) => {
+      const { 
+        $store, $storage }  = Vue
       state.typeToken     = ''
       state.accessToken   = ''
       state.expiresIn     = ''
       state.signatureDate = ''
       state.isActive      = false
-      localStorage.setItem('profile', JSON.stringify({}))
-      localStorage.setItem('credentials', JSON.stringify({})) 
+      $store
+        .dispatch('profile/reset')
+      $storage.remove('auth') 
+      $storage.remove('profile')
     }
   },
   getters: {
@@ -87,6 +133,6 @@ export const Auth = { namespaced: true,
      * @param {*} state
      * @return boolean
      */
-    [is_active]: state => state.isActive 
+    [is_active]: state => state.isActive
   }
 }

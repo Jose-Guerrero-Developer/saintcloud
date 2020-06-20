@@ -2,6 +2,7 @@
  * En: Importing constant settings
  * Es: Importando configuración de constantes
  */
+import Vue from 'vue'
 import {
   locale, selected, languages,
   LOCALE,
@@ -13,7 +14,8 @@ import {
  * @return string
  */
 const validateLocaleState = () => {
-  let locale = localStorage.getItem('locale') || process.env.VUE_APP_I18N_LOCALE || 'en'
+  const { $storage } = Vue
+  let locale         = $storage.get('locale') || process.env.VUE_APP_I18N_LOCALE || 'en'
   switch ((locale).toString().toLowerCase()) {
     case 'en': break
     case 'es': break
@@ -43,10 +45,10 @@ export const I18n = { namespaced: true,
      * En: Set the language change
      * Es: Estable el cambio de idioma
      * @param {*} commit
-     * @param {*} vm, locale 
+     * @param {Vue, locale} 
      */
-    [SET_LOCALE]: ({ commit }, { vm, locale }) => {
-      commit(LOCALE, {vm, locale})
+    [SET_LOCALE]: ({ commit }, { Vue, locale }) => {
+      commit(LOCALE, {Vue, locale})
     }
   },
   mutations: {
@@ -54,14 +56,18 @@ export const I18n = { namespaced: true,
      * En: Set the language change
      * Es: Estable el cambio de idioma
      * @param {*} state 
-     * @param {*} vm, locale 
+     * @param {Vue, locale} 
      */
-    [LOCALE]: ( state, { vm, locale }) => {
-      const loading  = vm.$buefy.loading.open({ container: null })
-      setTimeout(()  => { loading.close()
-        vm.$i18n.locale = locale
-        state.locale    = locale
-        localStorage.setItem('locale', locale)
+    [LOCALE]: ( state, { Vue, locale }) => {
+      const {
+        $i18n,
+        $buefy,
+        $storage }  = Vue
+      const loading = $buefy.loading.open({ container: null })
+      setTimeout(() => { loading.close()
+        $i18n.locale = locale
+        state.locale = locale
+        $storage.set('locale', locale)
       }, 0.5 * 1000)
     }
   },

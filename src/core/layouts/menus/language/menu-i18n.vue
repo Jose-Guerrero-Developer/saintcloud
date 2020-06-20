@@ -54,7 +54,7 @@ export default {
      * @return Promise
      */
     async setI18n(locale) {
-      this.$store.dispatch('i18n/set-locale', { vm: this, locale })
+      this.$store.dispatch('i18n/set-locale', { Vue: this, locale })
     }
   }
 };

@@ -2,22 +2,28 @@ import Vue from 'vue'
 import App from './views/app.vue'
 
 /**
+ * En: Set the instance with Vue Storage
+ * Es: Establece la instancia con Vue Storage
+ */
+import '@/core/store/vue-storage'
+
+/**
  * En: Set the instance with I18n
  * Es: Establece la instancia con I18n
  */
-import i18n from './core/i18n/i18n'
+import i18n from '@/core/i18n/i18n'
 
 /**
  * En: Set the instance with Vuex
  * Es: Establece la instancia con Vuex
  */
-import store from './core/store/store'
+import store from '@/core/store/store'
 
 /**
  * En: Set the instance with Vue Router
  * Es: Establece la instancia con Vue Router
  */
-import router from './core/router/router'
+import router from '@/core/router/router'
 
 /**
  * En: Set the instance with Vee Validation

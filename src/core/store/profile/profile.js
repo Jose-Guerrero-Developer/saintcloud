@@ -1,6 +1,8 @@
 import {
-  BUILD,
-  REBUILD } from '../constants'
+  LOAD,
+  RESET,
+  REBOOT,
+  INITIAL } from '../constants'
 
 /**
  * En: Session profile module management
@@ -17,28 +19,46 @@ export const Profile = { namespaced: true,
   },
   actions: {
     /**
-     * En: Build user profile session
-     * Es: Construir sesión del perfil de usuario
+     * En: Initialize the settings for the module
+     * Es: Inicializar las configuraciones para el módulo
      * @param {*} commit
-     * @param {*} profile
+     * @param {Vue, properties}
      */
-    [BUILD]: ({ commit }, profile) => commit(REBUILD, profile)  
+    [INITIAL]: ({ commit }, { Vue, properties }) => commit(LOAD, { Vue, properties }),
+    /**
+     * En: Reset all settings for the module
+     * Es: Reiniciar todas la configuraciones para el módulo
+     * @param {*} commit
+     */
+    [RESET]: ({ commit }) => commit(REBOOT)
   },
   mutations: {
     /**
-     * En: Set the user profile session
-     * Es: Establecer la sesión del perfil de usuario
+     * En: Load the configurations for the module
+     * Es: Cargar las configuraciones para el módulo
      * @param {*} state
-     * @param {id, name, email}
+     * @param {Vue, properties}
      */
-    [REBUILD]: (state, { id, name, email }) => {
+    [LOAD]: (state, { Vue, properties }) => {
+      const { $storage }  = Vue
+      const { 
+        id, name, email } = properties
       state.id    = id
       state.name  = name
       state.email = email
-      localStorage.setItem('profile', JSON.stringify({ id, name, email }))
+      $storage.set('profile', { id, name, email })
+    },
+    /**
+     * En: Reset all settings for the module
+     * Es: Reiniciar todas la configuraciones para el módulo
+     * @param {*} state
+     */
+    [REBOOT]: (state) => {
+      state.id          = 0,
+      state.name        = '',
+      state.email       = '',
+      state.roles       = {},
+      state.permissions = []
     }
-  },
-  getters: {
-
   }
 }
