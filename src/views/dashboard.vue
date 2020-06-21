@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import menuBreadcrumb from '@/core/layouts/menus/breadcrumb/menu-breadcrumb'
+import menuBreadcrumb from '@/layouts/menus/breadcrumb/menu-breadcrumb'
 export default { name: 'dashboard',
   components: { menuBreadcrumb },
   data: () => ({

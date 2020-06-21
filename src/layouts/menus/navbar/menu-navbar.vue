@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import menuI18n    from '@/core/layouts/menus/language/menu-i18n'
-import menuSearch  from '@/core/layouts/menus/search/menu-search'
-import menuAccount from '@/core/layouts/menus/account/menu-account'
+import menuI18n    from '@/layouts/menus/language/menu-i18n'
+import menuSearch  from '@/layouts/menus/search/menu-search'
+import menuAccount from '@/layouts/menus/account/menu-account'
 export default { name: 'menu-navbar',
   components: {
     menuI18n, menuAccount, menuSearch

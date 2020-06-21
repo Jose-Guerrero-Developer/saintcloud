@@ -67,7 +67,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import menuBreadcrumb from '@/core/layouts/menus/breadcrumb/menu-breadcrumb'
+import menuBreadcrumb from '@/layouts/menus/breadcrumb/menu-breadcrumb'
 import tableLanguages from '@/components/language/table-languages'
 export default { name: 'languages',
   data: () => ({

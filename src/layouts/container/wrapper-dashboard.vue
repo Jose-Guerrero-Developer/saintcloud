@@ -1,58 +1,64 @@
 <template>
   <div
-    class = "
-      image-background
-    "
+    id = "wrapper-dashboard"
   >
-    <div
+    <menu-navbar />
+    <section
       class = "
-        u-pt4
-        columns
-        is-mobile
-        is-centered
+        u-px3
+        u-py3
       "
     >
       <div
         class = "
-          column
-          is-two-fifths-tablet
-          is-one-third-desktop
-          is-one-quarter-fullhd
-          is-one-third-widescreen
-          is-three-quarters-mobile
+          is-fluid
+          container
         "
       >
-        <transition
-          name         = "fade"
-          mode         = "out-in"
-          @enter       = "enter"
-          @afterEnter  = "afterEnter"
-          @beforeLeave = "beforeLeave"
-        >
-          <router-view />
-        </transition>
         <div
-          class = "
-            field
-          "
+          class = "columns"
         >
           <div
             class = "
-              control
-              has-text-primary
-              has-text-centered
+              column
+              is-one-fifth
             "
           >
-            Copyright © 2020-2020 Saint Cloud Inc. {{ $t('all_rights_reserved') }}.
+            <b-menu>
+              <menu-aside
+                :items = "items" />
+            </b-menu>
+          </div>
+          <div
+            class = "column"
+          >
+            <transition
+              name         = "fade"
+              mode         = "out-in"
+              @beforeLeave = "beforeLeave"
+              @enter       = "enter"
+              @afterEnter  = "afterEnter"
+            >
+              <router-view />
+            </transition>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
 <script>
-export default { name: "wrapper-auth",
+import items      from '@/configs/menus/aside'
+import menuAside  from '@/layouts/menus/aside/menu-aside'
+import menuNavbar from '@/layouts/menus/navbar/menu-navbar'
+export default { name: 'wrapper-dashboard',
+  data: () => ({ 
+    items 
+  }),
+  components: {
+    menuAside, menuNavbar
+  },
   methods: {
     /**
      * En: Transition before lifting
@@ -85,16 +91,5 @@ export default { name: "wrapper-auth",
   transition-property: height, opacity;
   transition-timing-function: ease;
   overflow: hidden;
-}
-.image-background {
-  background-image: url("../../../assets/images/auth/wallpaper-auth.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #fff;
-  height: 100%;
-  width: 100%;
-  display: inline-block;
 }
 </style>
