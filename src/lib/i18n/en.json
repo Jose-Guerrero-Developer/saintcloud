@@ -15,6 +15,7 @@
   "flag": "Flag",
   "forgot_password": "Forgot password?",
   "french": "French",
+  "impossible_to_refresh_the_session_token": "Impossible to refresh the session token",
   "languages": "Languages",
   "log_off": "Log off",
   "login": "Login",

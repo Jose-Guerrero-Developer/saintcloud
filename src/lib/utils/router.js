@@ -103,14 +103,17 @@ router.beforeEach((to, from, next) => {
     $http,
     $i18n,
     $store,
+    $buefy,
     $httpStatus } = Vue
-  $i18n.locale    = $store.getters['i18n/locale']
   // En: Upload all local storage configurations to the Vuex store
   // Es: Cargar todas la configuraciones del local storage a la tienda de Vuex
   if ($store.getters['app/route-is-reloaded']) { $store.dispatch('app/load-inital-state', Vue) }
+  $i18n.locale          = $store.getters['i18n/locale']
+  const isActiveToken   = $store.getters['auth/is-active-token']
+  const hasExpiredToken = $store.getters['auth/has-expired-token'](Vue)
   // En: Validate if there is an active session when you are in the login path
   // Es: Validar si existe una sesión activa cuando este en la ruta de inicio de sesión
-  if (currentRouting === 'login' && $store.getters['auth/is-active']) {
+  if (currentRouting === 'login' && isActiveToken) {
     $http.get('auth/is-valid-token')
       .then(({ status }) => {
         if (status === $httpStatus.OK) {
@@ -125,7 +128,7 @@ router.beforeEach((to, from, next) => {
   }
   // En: Validate if there is an active session and if you have the access permissions
   // Es: Validar si existe una sesión activa y si cuenta con los permisos de acceso
-  if (currentRouting !== 'login' && $store.getters['auth/is-active']) {
+  if (currentRouting !== 'login' && isActiveToken) {
     $http.get('auth/is-valid-token')
       .catch(() => {
         $store
@@ -136,11 +139,42 @@ router.beforeEach((to, from, next) => {
   }
   // En: Validate if there is no session with login credentials
   // Es: Validar si no existe una sesión con credenciales de acceso
-  if (currentRouting !== 'login' && !$store.getters['auth/is-active']) {
+  if (currentRouting !== 'login' && !isActiveToken) {
     $store
       .dispatch('auth/sign-out', Vue)
-    router
-      .push({ name: 'login' })
+      router
+        .push({ name: 'login' }).catch(() => {
+          router.push({ name: 'login' })
+        })
+  }
+  // En: Validate if the session token expired
+  // Es: Validar si el token de la sesión expiro
+  if (isActiveToken && hasExpiredToken) {
+    $http.post('auth/refresh')
+      .then(authorization => { 
+        const { status, data: credentials } = authorization
+        if (status === $httpStatus.OK && !$store.dispatch('auth/sign-in', { Vue, credentials })) {
+          $store
+            .dispatch('auth/sign-out', Vue)
+          router
+            .push({ name: 'login' })
+          throw new Error('Impossible to refresh the session token')
+        }
+      }).catch(() => {
+        $buefy.notification.open({
+          type:       'is-danger',
+          duration:   3000,
+          'has-icon': true,
+          message:    `
+            <h5
+              class = "is-size-6 has-text-weight-bold"
+            >
+              ${ $i18n.t('authentication') }
+            </h5>
+            <p class = "is-size-6">${ $i18n.t('impossible_to_refresh_the_session_token') }</p>
+          `
+        })
+      })
   }
   next()
 })

@@ -15,6 +15,7 @@
   "flag": "Drapeau",
   "forgot_password": "Vous avez oublié votre mot de passe ?",
   "french": "Français",
+  "impossible_to_refresh_the_session_token": "Impossible de rafraîchir le jeton de session",
   "languages": "Langues",
   "log_off": "Se déconnecter",
   "login": "S'identifier",

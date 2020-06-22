@@ -26,7 +26,7 @@ export default { name: 'sign-out',
     this.signOut()
   },
   computed: {
-    ...mapGetters({ authIsActive: 'auth/is-active' })
+    ...mapGetters({ authIsActive: 'auth/is-active-token' })
   },
   methods: {
     /**

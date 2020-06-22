@@ -53,7 +53,7 @@ export const App = { namespaced: true,
         $store, $storage } = Vue
       let auth    = $storage.get('auth')
       let profile = $storage.get('profile')
-      if (!auth)    { auth    = { typeToken: '', accessToken: '', expiresIn: '', signatureDate: '', isActive: false } }
+      if (!auth)    { auth    = { typeToken: '', accessToken: '', expiresIn: '', signatureDate: '', expireSignature: '', isActive: false } }
       if (!profile) { profile = { id: '', name: '', email: '' } }
       $store
         .dispatch('profile/initial', { Vue, properties: profile })

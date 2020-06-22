@@ -15,6 +15,7 @@
   "flag": "Bandera",
   "forgot_password": "¿Olvidó la contraseña?",
   "french": "Francés",
+  "impossible_to_refresh_the_session_token": "Imposible refrescar el token de la sesión",
   "languages": "Idiomas",
   "log_off": "Cerrar sesión",
   "login": "Iniciar sesión",

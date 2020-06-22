@@ -38,6 +38,12 @@ import '@/lib/utils/vee-validate'
 import '@/lib/utils/axios'
 
 /**
+ * En: Set the instance with Moment
+ * Es: Establece la instancia con Moment
+ */
+import '@/lib/utils/moment'
+
+/**
  * En: Importing style configuration files
  * Es: Importando ficheros de configuración de estilos
  */

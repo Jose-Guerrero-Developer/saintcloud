@@ -23,6 +23,7 @@ const validateLocaleState = () => {
     default:
       locale = process.env.VUE_APP_I18N_LOCALE || 'en'
   }
+  $storage.set('locale', locale)
   return locale
 }
 

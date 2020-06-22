@@ -3,8 +3,9 @@ import {
   INITIAL,
   SIGN_IN,
   SIGN_OUT,
-  is_active,
+  IS_ACTIVE_TOKEN,
   SET_CREDENTIALS,
+  HAS_EXPIRED_TOKEN,
   DELETE_CREDENTIALS } from '../constants'
 
 /**
@@ -14,11 +15,12 @@ import {
  */
 export const Auth = { namespaced: true,
   state: {
-    typeToken:     '',
-    accessToken:   '',
-    expiresIn:     '',
-    signatureDate: '',
-    isActive:      false
+    typeToken:       '',
+    accessToken:     '',
+    expiresIn:       '',
+    signatureDate:   '',
+    expireSignature: '',
+    isActive:        false
   },
   actions: {
     /**
@@ -58,13 +60,15 @@ export const Auth = { namespaced: true,
         accessToken,
         expiresIn,
         signatureDate,
-        isActive        } = properties
-      state.typeToken     = typeToken
-      state.accessToken   = accessToken
-      state.expiresIn     = expiresIn
-      state.signatureDate = signatureDate
-      state.isActive      = isActive
-      $storage.set('auth', { typeToken, accessToken, expiresIn, signatureDate, isActive })
+        expireSignature,
+        isActive        }   = properties
+      state.typeToken       = typeToken
+      state.accessToken     = accessToken
+      state.expiresIn       = expiresIn
+      state.signatureDate   = signatureDate
+      state.expireSignature = expireSignature
+      state.isActive        = isActive
+      $storage.set('auth', { typeToken, accessToken, expiresIn, signatureDate, expireSignature, isActive })
       $http
         .defaults
         .headers
@@ -79,23 +83,27 @@ export const Auth = { namespaced: true,
     [SET_CREDENTIALS]: (state, { Vue, credentials }) => {
       const {
         $http,
-        $store, $storage } = Vue
+        $store, $moment, $storage   } = Vue
       const {
         token_type:   typeToken,
         access_token: accessToken,
         expires_in:   expiresIn,
         profile                     } = credentials
       let transaction       = undefined
-      const signatureDate   = Date.now()
+      const now             = $moment
+      const expiredAlert    = (expiresIn - ((expiresIn / 4) * 3))
+      const signatureDate   = now().format('x')
+      const expireSignature = now().add((expiresIn - expiredAlert), 's').format('x')
       const isActive        = true
       try {
-        state.typeToken     = typeToken
-        state.accessToken   = accessToken
-        state.expiresIn     = expiresIn
-        state.signatureDate = signatureDate
-        state.isActive      = isActive
+        state.typeToken       = typeToken
+        state.accessToken     = accessToken
+        state.expiresIn       = expiresIn
+        state.signatureDate   = signatureDate
+        state.expireSignature = expireSignature
+        state.isActive        = isActive
         $storage
-          .set('auth', { typeToken, accessToken, expiresIn, signatureDate, isActive })
+          .set('auth', { typeToken, accessToken, expiresIn, signatureDate, expireSignature, isActive })
         $store
           .dispatch('profile/initial', { Vue, properties: profile })
         $http
@@ -115,11 +123,12 @@ export const Auth = { namespaced: true,
     [DELETE_CREDENTIALS]: (state, Vue) => {
       const { 
         $store, $storage }  = Vue
-      state.typeToken     = ''
-      state.accessToken   = ''
-      state.expiresIn     = ''
-      state.signatureDate = ''
-      state.isActive      = false
+      state.typeToken       = ''
+      state.accessToken     = ''
+      state.expiresIn       = ''
+      state.signatureDate   = ''
+      state.expireSignature = ''
+      state.isActive        = false
       $store
         .dispatch('profile/reset')
       $storage.remove('auth') 
@@ -133,6 +142,18 @@ export const Auth = { namespaced: true,
      * @param {*} state
      * @return boolean
      */
-    [is_active]: state => state.isActive
+    [IS_ACTIVE_TOKEN]: state => state.isActive,
+    /**
+     * En: Get if the session token has expired
+     * Es: Obtener si ha caducado el token de la sesión
+     * @param {*} state
+     * @return boolean
+     */
+    [HAS_EXPIRED_TOKEN]: (state) => (Vue) => {
+      const { 
+        $moment } = Vue
+      const now   = $moment().format('x')
+      return ((state.expireSignature - now) <= 0) ? true : false
+    }
   }
 }
