@@ -50,11 +50,9 @@ export const App = { namespaced: true,
      */
     [SET_LOAD_INITIAL_STATE]: async (state, Vue) => {
       const {
-        $store, $storage }    = Vue
-      let auth                = $storage.get('auth')
-      let profile             = $storage.get('profile')
-      if (!auth)    { auth    = $store.getters[`auth/initial-state`   ] }
-      if (!profile) { profile = $store.getters[`profile/initial-state`] }
+        $store, $storage } = Vue
+      let auth             = $storage.get('auth')    || $store.getters[`auth/initial-state`   ]
+      let profile          = $storage.get('profile') || $store.getters[`profile/initial-state`]
       $store.dispatch('profile/initial', {
         Vue, properties: profile
       })
