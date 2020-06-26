@@ -3,6 +3,7 @@ import {
   INITIAL,
   SIGN_IN,
   SIGN_OUT,
+  INITIAL_STATE,
   IS_ACTIVE_TOKEN,
   SET_CREDENTIALS,
   HAS_EXPIRED_TOKEN,
@@ -136,6 +137,11 @@ export const Auth = { namespaced: true,
     }
   },
   getters: {
+    /**
+     * En: Return to the initial state of the module
+     * Es: Retornar el estado inicial del módulo
+     */
+    [INITIAL_STATE]: state => Array.from(new Map(Object.entries(state))).reduce((main, [key, value]) => ({...main, [key]: value}), {}),
     /**
      * En: Returns profile session status
      * Es: Retorna el estado de la sesión de perfil

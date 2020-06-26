@@ -2,7 +2,8 @@ import {
   LOAD,
   RESET,
   REBOOT,
-  INITIAL } from '../constants'
+  INITIAL,
+  INITIAL_STATE } from '../constants'
 
 /**
  * En: Session profile module management
@@ -15,7 +16,7 @@ export const Profile = { namespaced: true,
     name:        '',
     email:       '',
     roles:       {},
-    permissions: []
+    permissions: {}
   },
   actions: {
     /**
@@ -42,11 +43,14 @@ export const Profile = { namespaced: true,
     [LOAD]: (state, { Vue, properties }) => {
       const { $storage }  = Vue
       const { 
-        id, name, email } = properties
-      state.id    = id
-      state.name  = name
-      state.email = email
-      $storage.set('profile', { id, name, email })
+        id, name, email,
+        roles, permissions } = properties
+      state.id               = id
+      state.name             = name
+      state.email            = email
+      state.roles            = roles
+      state.permissions      = permissions
+      $storage.set('profile', { id, name, email, roles, permissions })
     },
     /**
      * En: Reset all settings for the module
@@ -58,7 +62,14 @@ export const Profile = { namespaced: true,
       state.name        = '',
       state.email       = '',
       state.roles       = {},
-      state.permissions = []
+      state.permissions = {}
     }
+  },
+  getters: {
+    /**
+     * En: Return to the initial state of the module
+     * Es: Retornar el estado inicial del módulo
+     */
+    [INITIAL_STATE]: state => Array.from(new Map(Object.entries(state))).reduce((main, [key, value]) => ({...main, [key]: value}), {}),
   }
 }
