@@ -7,7 +7,7 @@ import Buefy from 'buefy'
  */
 import '@mdi/font/scss/materialdesignicons.scss'
 import 'css-utils-padding/lib/padding.css'
-import '@/assets/scss/styles.scss'
+import '@/assets/scss/custom.scss'
 
 /**
  * En: Establish Buefy instance

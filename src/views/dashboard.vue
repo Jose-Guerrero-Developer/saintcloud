@@ -1,14 +1,14 @@
 <template>
   <div id="dashboard">
-    <menu-breadcrumb
+    <MenuBreadcrumb
       :items="breadcrumb" />
   </div>
 </template>
 
 <script>
-import menuBreadcrumb from '@/layouts/menus/breadcrumb/menu-breadcrumb'
+import MenuBreadcrumb from '@/layouts/menus/breadcrumb'
 export default { name: 'dashboard',
-  components: { menuBreadcrumb },
+  components: { MenuBreadcrumb },
   data: () => ({
     breadcrumb: [
       { i18n: 'dashboard', icon: 'view-dashboard-outline', route: 'dashboard' },

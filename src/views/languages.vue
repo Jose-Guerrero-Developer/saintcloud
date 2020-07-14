@@ -2,7 +2,7 @@
   <div
     id = "languages"
   >
-    <menu-breadcrumb
+    <MenuBreadcrumb
       :items = "breadcrumb" />
     <div
       class = "
@@ -67,7 +67,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import menuBreadcrumb from '@/layouts/menus/breadcrumb/menu-breadcrumb'
+import MenuBreadcrumb from '@/layouts/menus/breadcrumb'
 import tableLanguages from '@/components/language/table-languages'
 export default { name: 'languages',
   data: () => ({
@@ -84,7 +84,7 @@ export default { name: 'languages',
     ]
   }),
   components: {
-    tableLanguages, menuBreadcrumb
+    tableLanguages, MenuBreadcrumb
   },
   computed: {
     ...mapGetters({ languages: 'i18n/languages', selected: 'i18n/selected' })

@@ -2,13 +2,13 @@
   <div
     id = "roles-and-responsibilities"
   >
-    <menu-breadcrumb
+    <MenuBreadcrumb
       :items = "breadcrumb" />
   </div>
 </template>
 
 <script>
-import menuBreadcrumb from '@/layouts/menus/breadcrumb/menu-breadcrumb'
+import MenuBreadcrumb from '@/layouts/menus/breadcrumb'
 export default { name: 'roles-and-responsibilities',
   data: () => ({
     breadcrumb: [
@@ -16,6 +16,6 @@ export default { name: 'roles-and-responsibilities',
       { i18n: 'administer', active: true }
     ]
   }),
-  components: { menuBreadcrumb }
+  components: { MenuBreadcrumb }
 }
 </script>

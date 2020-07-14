@@ -1,0 +1,60 @@
+.navbar-end {
+  & a.navbar-item {
+    height: 52px;
+    width: 52px;
+    display: inline-flex;
+    position: relative;
+    vertical-align: top;
+    & .icon:only-child, .icon:only-child {
+      margin-left: 0;
+      margin-right: 0;
+      height: 100%;
+    }
+  }
+  .dropdown {
+    height: 52px;
+    width: 52px; margin: 0;
+    & .button.is-text:hover, .button.is-text.is-hovered, .button.is-text:focus, .button.is-text.is-focused {
+      background-color: #fafafa;
+    }
+    & .dropdown-trigger {
+      width: 100%;
+    }
+    & .button.is-text {
+      border-radius: 0;
+      height: 100%;
+      width: 100%;
+      &:hover {
+        background-color: #fafafa;
+      }
+    }
+    & .media {
+      align-items: center;
+      & h3 {
+        font-weight: bold;
+      }
+      & small {
+        display: block;
+        margin-top: -2px;
+      }
+    }
+  }
+  .mdi-24px.mdi-set, .mdi-24px.mdi:before {
+    font-size: 28px;
+  }
+}
+
+.is-button-language {
+  &:focus:not(:active), &:not(:active) {
+    box-shadow: none;
+  }
+  & img {
+    border-radius: 2px;
+    width: 22px;
+    vertical-align: middle;
+  }
+}
+
+.flag-border-radius {
+  border-radius: 2px;
+}

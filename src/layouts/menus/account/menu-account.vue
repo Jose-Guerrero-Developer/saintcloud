@@ -1,10 +1,11 @@
 <template>
   <b-dropdown position="is-bottom-left" append-to-body aria-role="menu">
-    <a class="navbar-item" slot="trigger" role="button">
-      <span>
-        <b-icon icon="account-cog-outline" size="is-medium"></b-icon>
-      </span>
-    </a>
+    <button
+      type  = "button"
+      slot  = "trigger"
+      class = "navbar-item button is-text is-button-language">
+      <b-icon icon="account-cog-outline" />
+    </button>
     <b-dropdown-item custom aria-role="menuitem">
       <strong>José Alexander</strong>
     </b-dropdown-item>
