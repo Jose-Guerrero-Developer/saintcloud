@@ -61,11 +61,8 @@ export const I18n = { namespaced: true,
      */
     [LOCALE]: ( state, { Vue, locale }) => {
       const {
-        $i18n,
-        $buefy,
-        $storage }  = Vue
-      const loading = $buefy.loading.open({ container: null })
-      setTimeout(() => { loading.close()
+        $i18n, $storage }  = Vue
+      setTimeout(() => {
         $i18n.locale = locale
         state.locale = locale
         $storage.set('locale', locale)

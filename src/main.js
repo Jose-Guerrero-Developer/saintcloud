@@ -1,5 +1,21 @@
 import Vue from 'vue'
-import App from './views/app.vue'
+import App from '@/views/App'
+
+import 'popper.js'
+import 'tooltip.js'
+import PerfectScrollbar from 'perfect-scrollbar'
+window.PerfectScrollbar = PerfectScrollbar
+import ClipboardJS      from 'clipboard'
+window.ClipboardJS      = ClipboardJS
+
+import '@/core/plugins/portal-vue'
+import '@/core/plugins/bootstrap-vue'
+import '@/core/plugins/perfect-scrollbar'
+import '@/core/plugins/highlight-js'
+import '@/core/plugins/inline-svg'
+import '@/core/plugins/apexcharts'
+import '@/core/plugins/metronic'
+import '@mdi/font/css/materialdesignicons.css'
 
 /**
  * En: Set the instance with Vue Storage
@@ -23,7 +39,7 @@ import store from '@/lib/store/store'
  * En: Set the instance with Vue Router
  * Es: Establece la instancia con Vue Router
  */
-import router from '@/lib/utils/router'
+import router from '@/routes/router'
 
 /**
  * En: Set the instance with Vee Validation
@@ -42,12 +58,6 @@ import '@/lib/utils/axios'
  * Es: Establece la instancia con Moment
  */
 import '@/lib/utils/moment'
-
-/**
- * En: Importing style configuration files
- * Es: Importando ficheros de configuración de estilos
- */
-import '@/lib/buefy'
 
 /**
  * En: Setting up Vue instances and configurations
